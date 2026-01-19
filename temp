@@ -1,0 +1,36 @@
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int selection;
+            string email;
+
+            Dictionary<string, string> Data = new();
+
+            Console.WriteLine("1. Create account");
+            Console.WriteLine("2. Print all accounts");
+
+            selection = int.Parse(Console.ReadLine());
+
+
+            if (selection == 1)
+            {
+                Console.WriteLine("Enter email");
+                email = Console.ReadLine();
+
+                Console.WriteLine("Enter players");
+                string players = Console.ReadLine();
+
+                Data.Add(email, players);
+            }
+            
+
+            if (selection == 2)
+            {
+
+            }
+        }
+    }
+}
