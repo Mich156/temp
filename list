@@ -1,0 +1,135 @@
+public class ArrayList<T> : IList<T> {
+
+	private T[] elements = new T[10];
+
+	private int length = 0;
+
+	public int Add(T element) {
+
+		if (length >= elements.Length) 
+		{
+			// must grow the backing array...
+			T[] newElements = new T[elements.Length + 10];
+
+			for (int i = 0; i <= elements.Length - 1; i++) {
+				newElements[i] = elements[i];
+			}
+			elements = newElements;
+		}
+
+		// at this point, elements is big enough for the new element no matter what...
+
+		length++;
+
+		elements[length - 1] = element;
+
+		return length - 1;
+	}
+
+	public void Clear() 
+	{
+		length = 0;
+	}
+
+	public int Find(T element) 
+	{
+        throw new NotImplementedException();
+    }
+
+	public int Find(T element, int startAt) 
+	{
+		throw new NotImplementedException();
+	}
+
+	public T Get(int index) {
+
+		if (!(index >= 0 && index <= length - 1)) 
+		{
+			throw new IndexOutOfRangeException();
+		}
+
+		return elements[index];
+	}
+
+	public void Insert(T element, int index) 
+	{
+		throw new NotImplementedException();
+	}
+
+	public void Remove(int offset) 
+	{
+        while (offset < length - 1)
+		{
+			elements[offset] = elements[offset + 1];
+			offset++;
+		}
+
+        elements[offset - 1] = elements[offset];
+    }
+
+	public int Size() 
+	{
+		return length;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataStructuresTestbed
+{
+    internal class Program
+    {
+        private static void Main()
+        {
+            IList<int> list = new ArrayList<int>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(i);
+                
+                Console.WriteLine(list.Get(i));
+            }
+
+            if (Console.ReadLine() == "f")
+            {
+                //list.Find();
+            }
+
+            if (Console.ReadLine() == "r")
+            {
+                Console.WriteLine("removing");
+                list.Remove(2);
+
+                Console.WriteLine("new");
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine(list.Get(i));
+                }
+            }
+        }
+    }
+}
