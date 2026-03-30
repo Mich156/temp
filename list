@@ -1,6 +1,6 @@
 public class ListMap<TKey, TValue> : IMap<TKey, TValue> {
 
-	private System.Collections.Generic.List<KeyValuePair> entries;
+	private System.Collections.Generic.List<KeyValuePair> entries = new();
 
 	private class KeyValuePair {
 		public TKey key;
