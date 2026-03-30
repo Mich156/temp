@@ -37,59 +37,55 @@ public class Program {
 
 		int sel = int.Parse(Console.ReadLine());
 
-
-		do
+		
+		if (sel == 1)
 		{
-			if (sel == 1)
-			{
-				Console.WriteLine("Enter key");
-				mapList.Contains(int.Parse(Console.ReadLine()));
-			}
-
-
-			if (sel == 2)
-			{
-				Console.WriteLine("Enter key");
-				mapList.Get(int.Parse(Console.ReadLine()));
-			}
-
-
-			if (sel == 3)
-			{
-                Console.WriteLine("Enter key");
-                int tempKey = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("Enter value");
-                string tempValue = Console.ReadLine();
-
-                mapList.Set(tempKey, tempValue);
-            }
-
-
-			if (sel == 4)
-			{
-				mapList.Size();
-			}
-
-
-            if (sel == 5)
-            {
-                Console.WriteLine("Enter key");
-				int tempKey = int.Parse(Console.ReadLine());
-
-				Console.WriteLine("Enter value");
-                string tempValue = Console.ReadLine();
-
-                mapList.Add(tempKey, tempValue);
-            }
-
-
-            if (sel == 0)
-			{
-				Environment.Exit(0);
-			}
+			Console.WriteLine("Enter key");
+			mapList.Contains(int.Parse(Console.ReadLine()));
 		}
-		while (sel != 0);
+
+
+		if (sel == 2)
+		{
+			Console.WriteLine("Enter key");
+			mapList.Get(int.Parse(Console.ReadLine()));
+		}
+
+
+		if (sel == 3)
+		{
+            Console.WriteLine("Enter key");
+            int tempKey = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter value");
+            string tempValue = Console.ReadLine();
+
+            mapList.Set(tempKey, tempValue);
+        }
+
+
+		if (sel == 4)
+		{
+			mapList.Size();
+		}
+
+
+        if (sel == 5)
+        {
+            Console.WriteLine("Enter key");
+			int tempKey = int.Parse(Console.ReadLine());
+
+			Console.WriteLine("Enter value");
+            string tempValue = Console.ReadLine();
+
+            mapList.Add(tempKey, tempValue);
+        }
+
+
+        if (sel == 0)
+		{
+			Environment.Exit(0);
+		}
     }
 }
 
