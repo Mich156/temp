@@ -1,135 +1,63 @@
-public class ArrayList<T> : IList<T> {
+public class ListMap<TKey, TValue> : IMap<TKey, TValue> {
 
-	private T[] elements = new T[10];
+	private System.Collections.Generic.List<KeyValuePair> entries;
 
-	private int length = 0;
+	private class KeyValuePair {
+		public TKey key;
+		public TValue value;
+	}
 
-	public int Add(T element) {
+	public void Clear() {
+		entries.Capacity = 0;
+	}
 
-		if (length >= elements.Length) 
+	public bool Contains(TKey key) {
+		for (int i = 0; i < entries.Count; i++)
 		{
-			// must grow the backing array...
-			T[] newElements = new T[elements.Length + 10];
-
-			for (int i = 0; i <= elements.Length - 1; i++) {
-				newElements[i] = elements[i];
+			if (key.Equals(entries[i].key))
+			{
+				return true;
 			}
-			elements = newElements;
 		}
 
-		// at this point, elements is big enough for the new element no matter what...
-
-		length++;
-
-		elements[length - 1] = element;
-
-		return length - 1;
-	}
-
-	public void Clear() 
-	{
-		length = 0;
-	}
-
-	public int Find(T element) 
-	{
-        throw new NotImplementedException();
+        return false;
     }
 
-	public int Find(T element, int startAt) 
-	{
-		throw new NotImplementedException();
-	}
-
-	public T Get(int index) {
-
-		if (!(index >= 0 && index <= length - 1)) 
-		{
-			throw new IndexOutOfRangeException();
-		}
-
-		return elements[index];
-	}
-
-	public void Insert(T element, int index) 
-	{
-		throw new NotImplementedException();
-	}
-
-	public void Remove(int offset) 
-	{
-        while (offset < length - 1)
-		{
-			elements[offset] = elements[offset + 1];
-			offset++;
-		}
-
-        elements[offset - 1] = elements[offset];
-    }
-
-	public int Size() 
-	{
-		return length;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataStructuresTestbed
-{
-    internal class Program
-    {
-        private static void Main()
+	public TValue Get(TKey key) {
+        for (int i = 0; i < entries.Count; i++)
         {
-            IList<int> list = new ArrayList<int>();
-
-            for (int i = 0; i < 10; i++)
+            if (key.Equals(entries[i].key))
             {
-                list.Add(i);
-                
-                Console.WriteLine(list.Get(i));
-            }
-
-            if (Console.ReadLine() == "f")
-            {
-                //list.Find();
-            }
-
-            if (Console.ReadLine() == "r")
-            {
-                Console.WriteLine("removing");
-                list.Remove(2);
-
-                Console.WriteLine("new");
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine(list.Get(i));
-                }
+                return entries[i].value;
             }
         }
+
+		throw new KeyNotFoundException();
     }
+
+	public void Set(TKey key, TValue value) {
+        for (int i = 0; i < entries.Count; i++)
+        {
+            if (key.Equals(entries[i].key))
+            {
+				entries[i].value = value;
+				return;
+            }
+        }
+
+		throw new KeyNotFoundException();
+    }
+
+	public void Add(TKey key, TValue value)
+	{
+        KeyValuePair newPair = new KeyValuePair();
+        newPair.key = key;
+        newPair.value = value;
+
+        entries.Add(newPair);
+    }
+
+	public int Size() {
+		return entries.Count;
+	}
 }
