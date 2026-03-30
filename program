@@ -32,6 +32,7 @@ public class Program {
 		Console.WriteLine("2. Get");
 		Console.WriteLine("3. Set");
 		Console.WriteLine("4. Size");
+		Console.WriteLine("5. Add");
 		Console.WriteLine("0. Exit");
 
 		int sel = int.Parse(Console.ReadLine());
@@ -55,8 +56,14 @@ public class Program {
 
 			if (sel == 3)
 			{
+                Console.WriteLine("Enter key");
+                int tempKey = int.Parse(Console.ReadLine());
 
-			}
+                Console.WriteLine("Enter value");
+                string tempValue = Console.ReadLine();
+
+                mapList.Set(tempKey, tempValue);
+            }
 
 
 			if (sel == 4)
@@ -65,7 +72,19 @@ public class Program {
 			}
 
 
-			if (sel == 0)
+            if (sel == 5)
+            {
+                Console.WriteLine("Enter key");
+				int tempKey = int.Parse(Console.ReadLine());
+
+				Console.WriteLine("Enter value");
+                string tempValue = Console.ReadLine();
+
+                mapList.Add(tempKey, tempValue);
+            }
+
+
+            if (sel == 0)
 			{
 				Environment.Exit(0);
 			}
