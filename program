@@ -1,0 +1,76 @@
+public class Program {
+
+	public static void Main(string[] args) {
+
+		IList<int> list = new ArrayList<int>();
+
+		IMap<int, string> mapList = new ListMap<int, string>();
+
+		// test 1: proper initialization...
+		Console.Write("List initialization... ");
+		if (list != null && list.Size() == 0) {
+			Console.Write("PASS");
+		}
+		else {
+			Console.Write("FAIL");
+		}
+		Console.WriteLine();
+
+		// test 2: first element addition...
+		Console.Write("Element addition, index: 0, element: 42... ");
+		list.Add(42);
+		if (list.Get(0) == 42 && list.Size() == 1) {
+			Console.Write("PASS");
+		}
+		else {
+			Console.Write("FAIL");
+		}
+		Console.WriteLine();
+
+
+		Console.WriteLine("1. Contains");
+		Console.WriteLine("2. Get");
+		Console.WriteLine("3. Set");
+		Console.WriteLine("4. Size");
+		Console.WriteLine("0. Exit");
+
+		int sel = int.Parse(Console.ReadLine());
+
+
+		do
+		{
+			if (sel == 1)
+			{
+				Console.WriteLine("Enter key");
+				mapList.Contains(int.Parse(Console.ReadLine()));
+			}
+
+
+			if (sel == 2)
+			{
+				Console.WriteLine("Enter key");
+				mapList.Get(int.Parse(Console.ReadLine()));
+			}
+
+
+			if (sel == 3)
+			{
+
+			}
+
+
+			if (sel == 4)
+			{
+				mapList.Size();
+			}
+
+
+			if (sel == 0)
+			{
+				Environment.Exit(0);
+			}
+		}
+		while (sel != 0);
+    }
+}
+
